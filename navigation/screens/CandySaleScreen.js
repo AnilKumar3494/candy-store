@@ -21,7 +21,7 @@ const CandySaleScreen = () => {
       <Text>Get 10% off on all candies today!</Text>
       <Button title="Shop Now" onPress={() => console.log('Shop now button pressed')} />
       <Switch value={candySale} onValueChange={(newValue) => setCandySale(newValue)} />
-      <Text>Toggle candy sale: {candySale? 'ON' : 'OFF'}</Text>
+      <Text>Toggle candy sale: {candySale ? 'ON' : 'OFF'}</Text>
     </View>
   );
 };
