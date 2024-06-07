@@ -1,10 +1,17 @@
 {
   "expo": {
+    "notifications": {
+           "ios": {
+              "badge": true,
+              "sound": true,
+              "android": {
+                      "icon": "./assets/icon.png",
+                        "color": "#ffffff",
     "name": "MyCandyShop",
     "slug": "MyCandyShop",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -21,10 +28,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.MyCandyShop"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
-}
+}}}}

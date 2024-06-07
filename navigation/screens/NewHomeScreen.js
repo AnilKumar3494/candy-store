@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Pressable, ScrollView, TouchableOpacity, Modal } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../CartReducer";
+import NotificationHandler from "../../components/NotificationHandler";
 
 const candies = [
     {
@@ -68,6 +69,7 @@ const candies = [
 
 const CandyItem = ({ item, inCart, onCartAction, onImagePress }) => (
     <View style={styles.itemContainer}>
+        
         <Pressable onPress={() => onImagePress(item.imageUrl)}>
             <Image style={styles.image} source={{ uri: item.imageUrl }} resizeMode="cover" />
         </Pressable>
