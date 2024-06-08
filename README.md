@@ -1,32 +1,30 @@
-## My Candy Shop
+# Authentication
 
-Welcome to My Candy Shop, an online store where you can buy your favorite candies and chocolates. This app serves both vendors and customers, allowing them to sell and purchase items easily. Currently, the focus is on chocolates and candies, but the selection can expand to include any desired items in the future.
+The authentication in this app is handled through a login screen where users enter their username and password. Below is a detailed explanation of how the authentication process works and how to implement it.
 
-### Data Format and Administration
+## Login Screen
 
-The app utilizes an array format to display items. This means that administrators can easily add new products by simply updating this array. In the future, I plan to implement an Admin Panel that will allow admins to add items directly without needing to access the code.
+The `LoginScreen` component is responsible for capturing the user's username and password and handling the login process.
 
-![alt text](image-1.png)
+## API Integration
 
-### Using the App
+To handle authentication, the app communicates with a backend API. Here is how to set up and use the API for the login process:
 
-Interacting with MyCandyShop is straightforward and user-friendly:
+### Setup API Endpoint
 
-- **Viewing Items**: Upon opening the app, users will see a list of chocolates available for purchase.
-- **Adding to Cart**: Each item will have an 'Add to Cart' button. Clicking this button will add the selected chocolate to the user's shopping cart.
-- **Managing Cart**: Users can scroll down to view their items in the cart. Here, they can update the quantity of each item or remove items entirely from the cart.
-  
+### Fetch Request
 
-### How the App Looks Like
+The `handleLogin` function sends a POST request to the login endpoint with the username and password.
 
-#### Initial Visual:
+### Handle Response
 
-![alt text](<WhatsApp Image 2024-04-25 at 03.46.43_95cfe6f3.jpg>)
+Based on the response from the server:
 
-#### The Cart:
+- **Successful Response (response.ok)**:
+  - Parse the JSON data.
+  - Navigate to the home screen or store the received token for authenticated requests.
 
-![alt text](<WhatsApp Image 2024-04-25 at 03.46.42_8eb70252.jpg>)
-
-#### Cart Expandable:
-
-![alt text](<WhatsApp Image 2024-04-25 at 03.46.42_d0f3c4c7.jpg>)
+- **Failed Response**:
+  - Alert the user.
+ 
+  ![image](https://github.com/AnilKumar3494/candy-store/assets/90452951/6dd9e9b2-fc6a-4f4c-9bb7-d5f581244699)
