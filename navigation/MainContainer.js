@@ -46,13 +46,13 @@ const TabNavigator = () => {
 
                     switch (route.name) {
                         case homeName:
-                            iconName = focused? 'home' : 'home-outline';
+                            iconName = focused ? 'home' : 'home-outline';
                             break;
                         case cartName:
-                            iconName = focused? 'cart' : 'cart-outline';
+                            iconName = focused ? 'cart' : 'cart-outline';
                             break;
                         case profileName:
-                            iconName = focused? 'person' : 'person-outline';
+                            iconName = focused ? 'person' : 'person-outline';
                             break;
                         default:
                             iconName = 'create-outline';
