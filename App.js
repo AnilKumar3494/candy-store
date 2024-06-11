@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-
 //.js files import
 import store from './store';
 

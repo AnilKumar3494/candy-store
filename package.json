@@ -14,8 +14,12 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
     "@reduxjs/toolkit": "^2.2.3",
-    "expo": "^51.0.8",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "expo": "^51.0.11",
     "expo-status-bar": "~1.12.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-gesture-handler": "^2.16.2",
@@ -23,10 +27,14 @@
     "react-native-safe-area-context": "^4.10.1",
     "react-native-screens": "^3.31.1",
     "react-native-vector-icons": "^10.1.0",
-    "react-redux": "^9.1.1"
+    "react-redux": "^9.1.1",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "private": true,
+  "description": "Welcome to My Candy Shop, an online store where you can buy your favorite candies and chocolates. This app serves both vendors and customers, allowing them to sell and purchase items easily. Currently, the focus is on chocolates and candies, but the selection can expand to include any desired items in the future.",
+  "author": "",
+  "license": "ISC"
 }
