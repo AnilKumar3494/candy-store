@@ -1,12 +1,30 @@
-import React from 'react';
+// Profile.js
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const Profile = () => {
-    const navigation = useNavigation();
+const Profile = ({ navigation, route }) => {
+    const [localUserData, setLocalUserData] = useState(route.params && route.params.userData);
+
+    useEffect(() => {
+        if (!localUserData) {
+            setLocalUserData({
+                name: 'John Doe',
+                bio: 'Member since 2024.',
+                email: 'johndoe@example.com',
+                phone: '+1234567890',
+            });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (route.params && route.params.userData) {
+            setLocalUserData(route.params.userData);
+        }
+    }, [route.params]);
 
     const goToEditProfile = () => {
-        navigation.navigate("EditProfile");
+        navigation.navigate("EditProfile", { userData: localUserData });
     };
 
     const goToTestScreen = () => {
@@ -19,16 +37,20 @@ const Profile = () => {
 
     return (
         <View style={styles.container}>
-            <Image
-                style={styles.profileImage}
-                source={{ uri: 'https://example.com/profile-picture.jpg' }}
-            />
-            <Text style={styles.name}>John Doe</Text>
-            <Text style={styles.bio}>Member since 2024.</Text>
-            <View style={styles.contactContainer}>
-                <Text style={styles.contactText}>Email: johndoe@example.com</Text>
-                <Text style={styles.contactText}>Phone: +1234567890</Text>
-            </View>
+            {localUserData && (
+                <>
+                    <Image
+                        style={styles.profileImage}
+                        source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}
+                    />
+                    <Text style={styles.name}>{localUserData.name}</Text>
+                    <Text style={styles.bio}>{localUserData.bio}</Text>
+                    <View style={styles.contactContainer}>
+                        <Text style={styles.contactText}>Email: {localUserData.email}</Text>
+                        <Text style={styles.contactText}>Phone: {localUserData.phone}</Text>
+                    </View>
+                </>
+            )}
             <TouchableOpacity
                 style={styles.editButton}
                 onPress={goToEditProfile}
@@ -44,6 +66,14 @@ const Profile = () => {
                 accessibilityLabel="Test Screen"
             >
                 <Text style={styles.editButtonText}>Go to Test</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.editButton}
+                onPress={goToNewHomeScreen}
+                accessibilityLabel="New Home Screen"
+            >
+                <Text style={styles.editButtonText}>Go to New Home</Text>
             </TouchableOpacity>
         </View>
     );

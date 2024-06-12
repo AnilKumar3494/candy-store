@@ -1,32 +1,48 @@
-import React, { useState } from 'react';
+// EditProfile.js
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
 
-
-const EditProfile = ({ navigation }) => {
+const EditProfile = ({ navigation, route }) => {
     const [profileImage, setProfileImage] = useState('');
     const [name, setName] = useState('');
     const [bio, setBio] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
+    const userData = route.params && route.params.userData;
+
+    useEffect(() => {
+        if (userData) {
+            setName(userData.name);
+            setBio(userData.bio);
+            setEmail(userData.email);
+            setPhone(userData.phone);
+        }
+    }, [userData]);
+
     const handleSave = () => {
         if (!name || !email || !phone) {
             Alert.alert('Error', 'Name, Email, and Phone are required fields.');
             return;
         }
-        // Save the profile data
-        navigation.goBack();
+        // Update the user data
+        const updatedUserData = {
+            name,
+            bio,
+            email,
+            phone,
+        };
+        // Pass the updated data back to the Profile screen
+        navigation.navigate('Profile', { userData: updatedUserData });
     }
 
     return (
         <ScrollView style={styles.container} behavior="padding" >
-
-
             <Text style={styles.label}>Name:</Text>
             <TextInput
                 style={styles.input}
                 value={name}
-                onChangeText={setName}
+                onChangeText={(text) => setName(text)}
                 placeholder="Enter Name"
                 accessibilityLabel="Name"
             />
@@ -34,7 +50,7 @@ const EditProfile = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 value={bio}
-                onChangeText={setBio}
+                onChangeText={(text) => setBio(text)}
                 placeholder="Enter Bio"
                 accessibilityLabel="Bio"
             />
@@ -42,7 +58,7 @@ const EditProfile = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={(text) => setEmail(text)}
                 placeholder="Enter Email"
                 keyboardType="email-address"
                 textContentType="emailAddress"
@@ -52,7 +68,7 @@ const EditProfile = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 value={phone}
-                onChangeText={setPhone}
+                onChangeText={(text) => setPhone(text)}
                 placeholder="Enter Phone Number"
                 keyboardType="phone-pad"
                 textContentType="telephoneNumber"
@@ -70,9 +86,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         backgroundColor: '#fff',
-    },
-    formContainer: {
-        padding: 20,
     },
     label: {
         fontSize: 16,
