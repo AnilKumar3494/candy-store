@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     formContainer: {
-            padding: 20,
-          },
+        padding: 20,
+    },
     label: {
         fontSize: 16,
         marginVertical: 10,
