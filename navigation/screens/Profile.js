@@ -1,6 +1,12 @@
 // Profile.js
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TouchableOpacity
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const Profile = ({ navigation, route }) => {
@@ -27,14 +33,6 @@ const Profile = ({ navigation, route }) => {
         navigation.navigate("EditProfile", { userData: localUserData });
     };
 
-    const goToTestScreen = () => {
-        navigation.navigate("TestScreen")
-    }
-
-    const goToNewHomeScreen = () => {
-        navigation.navigate("Home");
-    };
-
     return (
         <View style={styles.container}>
             {localUserData && (
@@ -58,23 +56,6 @@ const Profile = ({ navigation, route }) => {
             >
                 <Text style={styles.editButtonText}>Edit Profile</Text>
             </TouchableOpacity>
-
-            {/* testing */}
-            <TouchableOpacity
-                style={styles.editButton}
-                onPress={goToTestScreen}
-                accessibilityLabel="Test Screen"
-            >
-                <Text style={styles.editButtonText}>Go to Test</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.editButton}
-                onPress={goToNewHomeScreen}
-                accessibilityLabel="New Home Screen"
-            >
-                <Text style={styles.editButtonText}>Go to New Home</Text>
-            </TouchableOpacity>
         </View>
     );
 }
@@ -87,6 +68,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
+        backgroundColor: '#f0f0f0',
     },
     profileImage: {
         width: 100,
@@ -95,29 +77,36 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     name: {
-        fontSize: 26,
+        fontSize: 24,
         fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 10,
     },
     bio: {
         fontSize: 16,
-        color: 'gray',
-        marginVertical: 10,
+        color: '#666',
         textAlign: 'center',
+        marginBottom: 20,
     },
     contactContainer: {
-        marginVertical: 20,
+        marginBottom: 20,
     },
     contactText: {
         fontSize: 16,
+        color: '#333',
+        marginBottom: 5,
     },
     editButton: {
-        marginTop: 30,
         backgroundColor: '#007bff',
-        padding: 10,
-        borderRadius: 5,
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 8,
+        marginBottom: 10,
     },
     editButtonText: {
         color: '#fff',
         fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });

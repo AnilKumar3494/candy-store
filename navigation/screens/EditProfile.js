@@ -1,6 +1,15 @@
 // EditProfile.js
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+    Alert,
+    KeyboardAvoidingView,
+    ScrollView
+} from 'react-native';
 
 const EditProfile = ({ navigation, route }) => {
     const [profileImage, setProfileImage] = useState('');
@@ -38,7 +47,7 @@ const EditProfile = ({ navigation, route }) => {
 
     return (
         <ScrollView style={styles.container} behavior="padding" >
-            <Text style={styles.label}>Name:</Text>
+            <Text style={styles.label}>Name</Text>
             <TextInput
                 style={styles.input}
                 value={name}
@@ -46,7 +55,7 @@ const EditProfile = ({ navigation, route }) => {
                 placeholder="Enter Name"
                 accessibilityLabel="Name"
             />
-            <Text style={styles.label}>Bio:</Text>
+            <Text style={styles.label}>Bio</Text>
             <TextInput
                 style={styles.input}
                 value={bio}
@@ -54,7 +63,7 @@ const EditProfile = ({ navigation, route }) => {
                 placeholder="Enter Bio"
                 accessibilityLabel="Bio"
             />
-            <Text style={styles.label}>Email:</Text>
+            <Text style={styles.label}>Email</Text>
             <TextInput
                 style={styles.input}
                 value={email}
@@ -64,7 +73,7 @@ const EditProfile = ({ navigation, route }) => {
                 textContentType="emailAddress"
                 accessibilityLabel="Email"
             />
-            <Text style={styles.label}>Phone:</Text>
+            <Text style={styles.label}>Phone</Text>
             <TextInput
                 style={styles.input}
                 value={phone}
@@ -74,7 +83,9 @@ const EditProfile = ({ navigation, route }) => {
                 textContentType="telephoneNumber"
                 accessibilityLabel="Phone"
             />
-            <Button title="Save" onPress={handleSave} accessibilityLabel="Save Profile" />
+            <TouchableOpacity style={styles.saveButton} onPress={handleSave} accessibilityLabel="Save Profile">
+                <Text style={styles.saveButtonText}>Save</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 }
@@ -85,19 +96,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#f0f0f0',
     },
     label: {
-        fontSize: 16,
-        marginVertical: 10,
+        fontSize: 18,
+        marginBottom: 5,
         color: '#333',
     },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
-        padding: 10,
-        marginVertical: 10,
-        borderRadius: 5,
+        paddingVertical: 12,
+        paddingHorizontal: 15,
+        marginBottom: 20,
+        borderRadius: 8,
         fontSize: 16,
+        backgroundColor: '#fff',
+    },
+    saveButton: {
+        backgroundColor: '#007bff',
+        paddingVertical: 15,
+        borderRadius: 8,
+    },
+    saveButtonText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 });
