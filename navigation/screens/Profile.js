@@ -9,6 +9,10 @@ const Profile = () => {
         navigation.navigate("EditProfile");
     };
 
+    const goToTestScreen = () => {
+        navigation.navigate("TestScreen")
+    }
+
     const goToNewHomeScreen = () => {
         navigation.navigate("Home");
     };
@@ -31,6 +35,15 @@ const Profile = () => {
                 accessibilityLabel="Edit Profile"
             >
                 <Text style={styles.editButtonText}>Edit Profile</Text>
+            </TouchableOpacity>
+
+            {/* testing */}
+            <TouchableOpacity
+                style={styles.editButton}
+                onPress={goToTestScreen}
+                accessibilityLabel="Test Screen"
+            >
+                <Text style={styles.editButtonText}>Go to Test</Text>
             </TouchableOpacity>
         </View>
     );
