@@ -1,3 +1,6 @@
+//web 105321342579-skunr6rha24hufrpih6dnalf77cojfoi.apps.googleusercontent.com
+
+
 import React from 'react';
 // export { StatusBar } from 'expo-status-bar'
 
