@@ -1,3 +1,5 @@
+Here you go, the images are resized to 100px:
+
 ## My Candy Shop - Final Read Me
 
 Welcome to My Candy Shop, an online store where you can buy your favorite candies and chocolates. This app serves both vendors and customers, allowing them to sell and purchase items easily. Currently, the focus is on chocolates and candies, but the selection can expand to include any desired items in the future.
