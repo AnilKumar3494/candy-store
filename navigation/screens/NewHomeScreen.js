@@ -8,7 +8,7 @@ const candies = [
         id: 1,
         imageUrl: "https://images.unsplash.com/photo-1638194645412-1d0b4c53ffed?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         name: "Chocolate Bar",
-        price: 4.99
+        price: 5.99
     },
     {
         id: 2,
