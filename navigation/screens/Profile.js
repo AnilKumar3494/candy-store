@@ -7,10 +7,13 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
+import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
 
 const Profile = ({ navigation, route }) => {
     const [localUserData, setLocalUserData] = useState(route.params && route.params.userData);
+    const [memberSince, setMemberSince] = useState('');
+    const [userLocation, setUserLocation] = useState('');
 
     useEffect(() => {
         if (!localUserData) {
@@ -21,16 +24,42 @@ const Profile = ({ navigation, route }) => {
                 phone: '+1234567890',
             });
         }
+        const currentDate = new Date();
+        const month = currentDate.toLocaleString('default', { month: 'long' });
+        const year = currentDate.getFullYear();
+        setMemberSince(`Member since ${month}, ${year}`); // Changed space to comma
     }, []);
 
     useEffect(() => {
-        if (route.params && route.params.userData) {
-            setLocalUserData(route.params.userData);
+        if (route.params && route.params.updatedUserData) {
+            const updatedUserData = {
+                ...localUserData,
+                ...route.params.updatedUserData,
+            };
+            setLocalUserData(updatedUserData);
         }
     }, [route.params]);
 
     const goToEditProfile = () => {
         navigation.navigate("EditProfile", { userData: localUserData });
+    };
+
+    const getLocation = async () => {
+        try {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                console.error('Location permission denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            const { latitude, longitude } = location.coords;
+            let reverseGeocode = await Location.reverseGeocodeAsync({ latitude, longitude });
+            const { name, street, city, postalCode, region, countryCode } = reverseGeocode[0];
+            setUserLocation(`${name}, ${street}, ${city}, ${postalCode}, ${region}`);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -42,13 +71,22 @@ const Profile = ({ navigation, route }) => {
                         source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}
                     />
                     <Text style={styles.name}>{localUserData.name}</Text>
+                    <Text style={styles.memberSince}>{memberSince}</Text>
                     <Text style={styles.bio}>{localUserData.bio}</Text>
                     <View style={styles.contactContainer}>
                         <Text style={styles.contactText}>Email: {localUserData.email}</Text>
                         <Text style={styles.contactText}>Phone: {localUserData.phone}</Text>
+                        <Text style={styles.contactText}>Location: {userLocation}</Text>
                     </View>
                 </>
             )}
+            <TouchableOpacity
+                style={styles.locationButton}
+                onPress={getLocation}
+                accessibilityLabel="Get Location"
+            >
+                <Text style={styles.locationButtonText}>Get Location</Text>
+            </TouchableOpacity>
             <TouchableOpacity
                 style={styles.editButton}
                 onPress={goToEditProfile}
@@ -82,6 +120,12 @@ const styles = StyleSheet.create({
         color: '#333',
         marginBottom: 10,
     },
+    memberSince: {
+        fontSize: 16,
+        color: '#666',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
     bio: {
         fontSize: 16,
         color: '#666',
@@ -104,6 +148,19 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     editButtonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    locationButton: {
+        backgroundColor: '#007bff',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 8,
+        marginBottom: 10,
+    },
+    locationButtonText: {
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
