@@ -61,7 +61,7 @@ const TabNavigator = () => (
             tabBarLabelStyle: { paddingBottom: 5, fontSize: 10 }
         })}
     >
-        <Tab.Screen name={homeName} component={NewHomeScreen} />
+        <Tab.Screen name={homeName} component={NewHomeScreen} options={{ headerShown: false }} />
         <Tab.Screen name={profileName} component={Profile} />
         <Tab.Screen name={cartName} component={Cart} />
         <Tab.Screen name={editProfileName} component={EditProfile} />
