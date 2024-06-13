@@ -1,49 +1,60 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+// Profile.js
+import React, { useState, useEffect } from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TouchableOpacity
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const Profile = () => {
-    const navigation = useNavigation();
+const Profile = ({ navigation, route }) => {
+    const [localUserData, setLocalUserData] = useState(route.params && route.params.userData);
+
+    useEffect(() => {
+        if (!localUserData) {
+            setLocalUserData({
+                name: 'John Doe',
+                bio: 'Member since 2024.',
+                email: 'johndoe@example.com',
+                phone: '+1234567890',
+            });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (route.params && route.params.userData) {
+            setLocalUserData(route.params.userData);
+        }
+    }, [route.params]);
 
     const goToEditProfile = () => {
-        navigation.navigate("EditProfile");
-    };
-
-    const goToTestScreen = () => {
-        navigation.navigate("TestScreen")
-    }
-
-    const goToNewHomeScreen = () => {
-        navigation.navigate("Home");
+        navigation.navigate("EditProfile", { userData: localUserData });
     };
 
     return (
         <View style={styles.container}>
-            <Image
-                style={styles.profileImage}
-                source={{ uri: 'https://example.com/profile-picture.jpg' }}
-            />
-            <Text style={styles.name}>John Doe</Text>
-            <Text style={styles.bio}>Member since 2024.</Text>
-            <View style={styles.contactContainer}>
-                <Text style={styles.contactText}>Email: johndoe@example.com</Text>
-                <Text style={styles.contactText}>Phone: +1234567890</Text>
-            </View>
+            {localUserData && (
+                <>
+                    <Image
+                        style={styles.profileImage}
+                        source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}
+                    />
+                    <Text style={styles.name}>{localUserData.name}</Text>
+                    <Text style={styles.bio}>{localUserData.bio}</Text>
+                    <View style={styles.contactContainer}>
+                        <Text style={styles.contactText}>Email: {localUserData.email}</Text>
+                        <Text style={styles.contactText}>Phone: {localUserData.phone}</Text>
+                    </View>
+                </>
+            )}
             <TouchableOpacity
                 style={styles.editButton}
                 onPress={goToEditProfile}
                 accessibilityLabel="Edit Profile"
             >
                 <Text style={styles.editButtonText}>Edit Profile</Text>
-            </TouchableOpacity>
-
-            {/* testing */}
-            <TouchableOpacity
-                style={styles.editButton}
-                onPress={goToTestScreen}
-                accessibilityLabel="Test Screen"
-            >
-                <Text style={styles.editButtonText}>Go to Test</Text>
             </TouchableOpacity>
         </View>
     );
@@ -57,6 +68,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
+        backgroundColor: '#f0f0f0',
     },
     profileImage: {
         width: 100,
@@ -65,29 +77,36 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     name: {
-        fontSize: 26,
+        fontSize: 24,
         fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 10,
     },
     bio: {
         fontSize: 16,
-        color: 'gray',
-        marginVertical: 10,
+        color: '#666',
         textAlign: 'center',
+        marginBottom: 20,
     },
     contactContainer: {
-        marginVertical: 20,
+        marginBottom: 20,
     },
     contactText: {
         fontSize: 16,
+        color: '#333',
+        marginBottom: 5,
     },
     editButton: {
-        marginTop: 30,
         backgroundColor: '#007bff',
-        padding: 10,
-        borderRadius: 5,
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 8,
+        marginBottom: 10,
     },
     editButtonText: {
         color: '#fff',
         fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });

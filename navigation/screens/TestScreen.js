@@ -3,6 +3,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler'; // Import GestureHandlerRootView
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const TestScreen = () => {
     const navigation = useNavigation();
@@ -13,12 +14,12 @@ const TestScreen = () => {
 
     return (
         <GestureHandlerRootView>
-            <View>
+            <SafeAreaView>
                 <Text>TestScreen</Text>
                 <TouchableOpacity style={styles.shopNowButton} onPress={goToNewHomeScreen}>
                     <Text style={styles.shopNowButtonText}>Go to Home</Text>
                 </TouchableOpacity>
-            </View>
+            </SafeAreaView>
         </GestureHandlerRootView>
     );
 }

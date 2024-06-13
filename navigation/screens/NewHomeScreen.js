@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginBottom: 10,
         color: "#333",
-        color: "#333",
         paddingVertical: 16,
     },
     subHeader: {
@@ -163,7 +162,7 @@ const styles = StyleSheet.create({
         padding: 20,
         elevation: 2,
         shadowColor: "#000",
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.2,
         shadowRadius: 4,
     },
     image: {

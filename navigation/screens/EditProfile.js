@@ -1,64 +1,91 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
+// EditProfile.js
+import React, { useState, useEffect } from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+    Alert,
+    KeyboardAvoidingView,
+    ScrollView
+} from 'react-native';
 
-
-const EditProfile = ({ navigation }) => {
+const EditProfile = ({ navigation, route }) => {
     const [profileImage, setProfileImage] = useState('');
     const [name, setName] = useState('');
     const [bio, setBio] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
+    const userData = route.params && route.params.userData;
+
+    useEffect(() => {
+        if (userData) {
+            setName(userData.name);
+            setBio(userData.bio);
+            setEmail(userData.email);
+            setPhone(userData.phone);
+        }
+    }, [userData]);
+
     const handleSave = () => {
         if (!name || !email || !phone) {
             Alert.alert('Error', 'Name, Email, and Phone are required fields.');
             return;
         }
-        // Save the profile data
-        navigation.goBack();
+        // Update the user data
+        const updatedUserData = {
+            name,
+            bio,
+            email,
+            phone,
+        };
+        // Pass the updated data back to the Profile screen
+        navigation.navigate('Profile', { userData: updatedUserData });
     }
 
     return (
         <ScrollView style={styles.container} behavior="padding" >
-
-
-            <Text style={styles.label}>Name:</Text>
+            <Text style={styles.label}>Name</Text>
             <TextInput
                 style={styles.input}
                 value={name}
-                onChangeText={setName}
+                onChangeText={(text) => setName(text)}
                 placeholder="Enter Name"
                 accessibilityLabel="Name"
             />
-            <Text style={styles.label}>Bio:</Text>
+            <Text style={styles.label}>Bio</Text>
             <TextInput
                 style={styles.input}
                 value={bio}
-                onChangeText={setBio}
+                onChangeText={(text) => setBio(text)}
                 placeholder="Enter Bio"
                 accessibilityLabel="Bio"
             />
-            <Text style={styles.label}>Email:</Text>
+            <Text style={styles.label}>Email</Text>
             <TextInput
                 style={styles.input}
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={(text) => setEmail(text)}
                 placeholder="Enter Email"
                 keyboardType="email-address"
                 textContentType="emailAddress"
                 accessibilityLabel="Email"
             />
-            <Text style={styles.label}>Phone:</Text>
+            <Text style={styles.label}>Phone</Text>
             <TextInput
                 style={styles.input}
                 value={phone}
-                onChangeText={setPhone}
+                onChangeText={(text) => setPhone(text)}
                 placeholder="Enter Phone Number"
                 keyboardType="phone-pad"
                 textContentType="telephoneNumber"
                 accessibilityLabel="Phone"
             />
-            <Button title="Save" onPress={handleSave} accessibilityLabel="Save Profile" />
+            <TouchableOpacity style={styles.saveButton} onPress={handleSave} accessibilityLabel="Save Profile">
+                <Text style={styles.saveButtonText}>Save</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 }
@@ -69,22 +96,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#f0f0f0',
     },
-    formContainer: {
-            padding: 20,
-          },
     label: {
-        fontSize: 16,
-        marginVertical: 10,
+        fontSize: 18,
+        marginBottom: 5,
         color: '#333',
     },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
-        padding: 10,
-        marginVertical: 10,
-        borderRadius: 5,
+        paddingVertical: 12,
+        paddingHorizontal: 15,
+        marginBottom: 20,
+        borderRadius: 8,
         fontSize: 16,
+        backgroundColor: '#fff',
+    },
+    saveButton: {
+        backgroundColor: '#007bff',
+        paddingVertical: 15,
+        borderRadius: 8,
+    },
+    saveButtonText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 });
