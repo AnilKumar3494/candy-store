@@ -1,4 +1,4 @@
-Here you go, the images are resized to 100px:
+Here's the readme with the resized images:
 
 ## My Candy Shop - Final Read Me
 
@@ -6,37 +6,37 @@ Welcome to My Candy Shop, an online store where you can buy your favorite candie
 
 ### Login Screen
 
-![Login Screen](./readmeimages/WhatsApp%20Image%202024-06-13%20at%206.33.30%20PM.jpeg)
+![Login Screen](./readmeimages/WhatsApp%20Image%202024-06-13%20at%206.33.30%20PM.jpeg =100x)
 
 This page welcomes the user and offers options to sign in with Google. However, due to security concerns, Google sign-in is currently disabled.
 
 If "Shop Now" is clicked, you will be directed to the Home Page.
 
-![Shop Now](./readmeimages/WhatsApp%20Image%202024-06-13%20at%206.33.54%20PM.jpeg)
+![Shop Now](./readmeimages/WhatsApp%20Image%202024-06-13%20at%206.33.54%20PM.jpeg =100x)
 
 ### Home Page
 
 Here, users can add needed items to the cart, and the button changes to 'remove from cart'.
 
-![Add to Cart](./readmeimages/removefromcart.png)
+![Add to Cart](./readmeimages/removefromcart.png =100x)
 
 ### Cart
 
 Users can navigate to the cart using the tab navigation below.
 
-![Cart](./readmeimages/itemsincart.png)
+![Cart](./readmeimages/itemsincart.png =100x)
 
 Items in the cart can be easily adjusted using the + and - buttons, and the price will update automatically.
 
-![Cart Adjustments](./readmeimages/itemsIncrement.png)
+![Cart Adjustments](./readmeimages/itemsIncrement.png =100x)
 
 If the cart is empty, users are prompted to shop.
 
-![Empty Cart](./readmeimages/emptycart.png)
+![Empty Cart](./readmeimages/emptycart.png =100x)
 
 ### Profile
 
-![Profile Page](./readmeimages/Profile%20page.png)
+![Profile Page](./readmeimages/Profile%20page.png =100x)
 
 The profile page displays user information with 'Get Location' and 'Edit Profile' buttons. The "Member Since" data is fetched from the user's local time, and the month and year are added accordingly.
 
@@ -44,37 +44,37 @@ The profile page displays user information with 'Get Location' and 'Edit Profile
 
 This button uses the user's current location to retrieve their full address. It was implemented using Google Cloud and Google Maps API. Once clicked, permissions will be requested, and upon approval, the user's current location will be added.
 
-![Location Permissions](./readmeimages/location%20permissions.jpg)
+![Location Permissions](./readmeimages/location%20permissions.jpg =100x)
 
 Updated Location - I am working from Urban Eatery, and the exact location was provided.
 
-![Updated Location](./readmeimages/updatedlocation.png)
+![Updated Location](./readmeimages/updatedlocation.png =100x)
 
 My current location for proof:
 
-![My Current Location](./readmeimages/mycurrentlocation.png)
+![My Current Location](./readmeimages/mycurrentlocation.png =100x)
 
 ### Edit Profile
 
 Clicking the "Edit Profile" button takes the user to the profile editing screen, where the information is pre-loaded from the Profile page. Here, there are input fields that can be edited.
 
-![Profile Editing](./readmeimages/profileediting.png)
+![Profile Editing](./readmeimages/profileediting.png =100x)
 
 Once the user updates the information and clicks save, the info will be modified on the Profile page.
 
 Updated Profile Screen:
 
-![Updated Profile](./readmeimages/updatesProfile.png)
+![Updated Profile](./readmeimages/updatesProfile.png =100x)
 
 Clicking "Edit" again will take the user to the editing page with new prefilled data.
 
-![New Edit Page](./readmeimages/newEditPage.png)
+![New Edit Page](./readmeimages/newEditPage.png =100x)
 
 ### Data Format and Administration
 
 The app utilizes an array format to display items. This means that administrators can easily add new products by simply updating this array. In the future, we plan to implement an Admin Panel that will allow admins to add items directly without needing to access the code.
 
-![Data Format](./readmeimages/image.png)
+![Data Format](./readmeimages/image.png =100x)
 
 ## Using the App
 
