@@ -1,4 +1,3 @@
-// EditProfile.js
 import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
@@ -12,9 +11,7 @@ import {
 } from 'react-native';
 
 const EditProfile = ({ navigation, route }) => {
-    const [profileImage, setProfileImage] = useState('');
     const [name, setName] = useState('');
-    const [bio, setBio] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
@@ -23,7 +20,6 @@ const EditProfile = ({ navigation, route }) => {
     useEffect(() => {
         if (userData) {
             setName(userData.name);
-            setBio(userData.bio);
             setEmail(userData.email);
             setPhone(userData.phone);
         }
@@ -37,12 +33,11 @@ const EditProfile = ({ navigation, route }) => {
         // Update the user data
         const updatedUserData = {
             name,
-            bio,
             email,
             phone,
         };
         // Pass the updated data back to the Profile screen
-        navigation.navigate('Profile', { userData: updatedUserData });
+        navigation.navigate('Profile', { updatedUserData }); // Passing updatedUserData instead of userData
     }
 
     return (
@@ -54,14 +49,6 @@ const EditProfile = ({ navigation, route }) => {
                 onChangeText={(text) => setName(text)}
                 placeholder="Enter Name"
                 accessibilityLabel="Name"
-            />
-            <Text style={styles.label}>Bio</Text>
-            <TextInput
-                style={styles.input}
-                value={bio}
-                onChangeText={(text) => setBio(text)}
-                placeholder="Enter Bio"
-                accessibilityLabel="Bio"
             />
             <Text style={styles.label}>Email</Text>
             <TextInput
