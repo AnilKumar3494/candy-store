@@ -83,3 +83,35 @@ Interacting with MyCandyShop is straightforward and user-friendly:
 - **Viewing Items**: Upon opening the app, users will see a list of chocolates available for purchase.
 - **Adding to Cart**: Each item will have an 'Add to Cart' button. Clicking this button will add the selected chocolate to the user's shopping cart.
 - **Managing Cart**: Users can scroll down to view their items in the cart. Here, they can update the quantity of each item or remove items entirely from the cart.
+
+## Using the App - For Developers
+
+To use or test our application, follow these steps:
+
+1. Clone our repository using the following command:
+
+   ```
+   git clone https://github.com/AnilKumar3494/candy-store.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```
+   cd candy-store
+   ```
+
+3. Install all the required dependencies:
+
+   ```
+   npm install
+   ```
+
+   This will install all the necessary dependencies to run our application.
+
+4. Start the application:
+
+   ```
+   npx expo start
+   ```
+
+   You can now test our application.
