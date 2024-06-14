@@ -8,7 +8,7 @@ Welcome to My Candy Shop, an online store where you can buy your favorite candie
 
 <img src="./readmeimages/WhatsApp%20Image%202024-06-13%20at%206.33.30%20PM.jpeg" alt="Login Screen" width="400" />
 
-This page welcomes the user and offers options to sign in with Google. However, due to security concerns, Google sign-in is currently disabled.
+This page welcomes the user and offers options to sign in with Google. However, due to security concerns, Google sign-in is currently disabled. This uses Google's Firebase API and stores the data there. This works similar to our traditional backend but like a NoSQL one.
 
 If "Shop Now" is clicked, you will be directed to the Home Page.
 
@@ -22,7 +22,7 @@ Here, users can add needed items to the cart, and the button changes to 'remove 
 
 ### Cart
 
-Users can navigate to the cart using the tab navigation below.
+Users can navigate to the cart using the tab navigation below. Here redux is used for state management.
 
 <img src="./readmeimages/itemsincart.png" alt="Cart" width="400" />
 
@@ -60,7 +60,7 @@ Clicking the "Edit Profile" button takes the user to the profile editing screen,
 
 <img src="./readmeimages/profileediting.png" alt="Profile Editing" width="400" />
 
-Once the user updates the information and clicks save, the info will be modified on the Profile page.
+Once the user updates the information and clicks save, the info will be modified on the Profile page. This is done using 'local storage'
 
 Updated Profile Screen:
 
